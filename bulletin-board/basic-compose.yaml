@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  bb-app:
+    image: ${dockerId}/bb-app:v2
+    networks:
+      - bb-net
+    ports:
+      - "8080:8080"
+  bb-db:
+    image: ${dockerId}/bb-db:v2
+    networks:
+      - bb-net
+
+networks:
+  bb-net:

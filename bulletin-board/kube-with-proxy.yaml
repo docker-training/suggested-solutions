@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bb-database
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: db
+  template:
+    metadata:
+      labels:
+        bb: db
+    spec:
+      containers:
+      - name: database
+        image: <Docker ID>/bb-db:v2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bb-frontend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: frontend
+  template:
+    metadata:
+      labels:
+        bb: frontend
+    spec:
+      containers:
+      - name: web
+        image: <Docker ID>/bb-app:v2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bb-proxy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: proxy
+  template:
+    metadata:
+      labels:
+        bb: proxy
+    spec:
+      containers:
+      - name: nginx
+        image: <Docker ID>/bb-proxy:v2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bb-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    bb: proxy
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 33333
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bb-db
+  namespace: default
+spec:
+  selector:
+    bb: db
+  ports:
+  - port: 1433
+    targetPort: 1433
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bb-app
+  namespace: default
+spec:
+  selector:
+    bb: frontend
+  ports:
+  - port: 8080
+    targetPort: 8080
