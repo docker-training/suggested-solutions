@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  bb-db:
+    image: ${dockerId}/bb-db:v2
+    networks:
+      - bb-net
+    volumes:
+      - sqlbackup:/var/opt/mssql
+
+  bb-app:
+    image: ${dockerId}/bb-app:v2.2
+    networks:
+      - bb-net
+    env_file:
+      - bbconfig.env
+    secrets:
+      - passwd
+
+  bb-proxy:
+    image: ${dockerId}/bb-proxy:v2.1
+    ports:
+      - "8000:80"
+    networks:
+      - bb-net
+    configs:
+      - source: proxyconfig
+        target: /etc/nginx/nginx.conf
+
+networks:
+  bb-net:
+
+secrets:
+  passwd:
+    external: true
+
+configs:
+  proxyconfig:
+    file: ./bulletin-board-proxy/nginx.conf
+
+volumes:
+  sqlbackup:
