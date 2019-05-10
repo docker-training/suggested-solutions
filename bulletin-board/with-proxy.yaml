@@ -12,7 +12,7 @@ services:
   bb-proxy:
     image: ${dockerId}/bb-proxy:v2
     ports:
-      - "80:80"
+      - "8000:80"
     networks:
       - bb-net
 
