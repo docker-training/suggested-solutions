@@ -4,14 +4,14 @@ services:
     environment:
       POSTGRES_DB: ddev
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres-password
-    image: pets-db:1.0        
+    image: pets-db:1.0
     restart: always
     secrets:
     - postgres-password
     volumes:
     - postgres-data:/var/lib/postgresql/data
   api:
-    image: pets-api:1.0        
+    image: pets-api:1.0
     secrets:
     - source: postgres-password
       target: postgres_password
@@ -22,6 +22,9 @@ services:
       context: ui
       dockerfile: Dockerfile-dev
     image: ddev_ui
+    volumes:
+      - ./ui/src:/app/src
+      - ./ui/package.json:/app/package.json
     ports:
     - "3000:3000"
 volumes:
