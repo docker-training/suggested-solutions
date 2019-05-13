@@ -1,0 +1,41 @@
+version: "3.6"
+services:
+  database:
+    environment:
+      POSTGRES_DB: ddev
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres-password
+    image: ${dockerID}/ddev_db
+    build:
+      context: database
+    restart: always
+    secrets:
+    - postgres-password
+    volumes:
+    - postgres-data:/var/lib/postgresql/data
+  apiserver:
+    build:
+      context: api
+      dockerfile: Dockerfile.api
+    image: ${dockerID}/ddev_api
+    volumes:
+      - ./api:/usr/src/ddev
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    secrets:
+      - postgres_password
+  watcher:
+    build:
+      context: api
+      dockerfile: Dockerfile.api
+    volumes:
+      - ./api:/usr/src/ddev
+    command: mvn fizzed-watcher:run
+    networks:
+      - back-tier
+
+volumes:
+  postgres-data: {}
+secrets:
+  postgres-password:
+    file: devsecrets/postgres_password
