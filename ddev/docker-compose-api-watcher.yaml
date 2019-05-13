@@ -23,7 +23,10 @@ services:
       - "8080:8080"
       - "5005:5005"
     secrets:
-      - postgres_password
+      - source: postgres-password
+        target: postgres_password
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
   watcher:
     build:
       context: api
@@ -31,8 +34,6 @@ services:
     volumes:
       - ./api:/usr/src/ddev
     command: mvn fizzed-watcher:run
-    networks:
-      - back-tier
 
 volumes:
   postgres-data: {}
