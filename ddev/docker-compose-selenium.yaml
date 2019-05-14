@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  selenium:
+    image: selenium/standalone-chrome:3.4.0-dysprosium
+    volumes:
+    - /dev/shm:/dev/shm
+    networks:
+    - front-tier
+    ports:
+    - 4444:4444
+  e2e:
+    build: e2e
+    networks:
+    - front-tier
+    command: npm start
+
+networks:
+  front-tier:
