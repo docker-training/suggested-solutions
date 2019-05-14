@@ -1,0 +1,16 @@
+version: '3.6'
+
+services:
+  app:
+    build: .
+    ports:
+    - 3000:3000
+    networks:
+    - back-tier
+  redis:
+    image: redis:latest
+    networks:
+    - back-tier
+
+networks:
+    back-tier:
