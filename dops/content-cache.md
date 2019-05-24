@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+  cache:
+    image: docker/dtr-content-cache:2.7.0
+    entrypoint:
+      - /start.sh
+      - "/config.yaml"
+    ports:
+      - 443:443
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.dtr.cache == true]
+      restart_policy:
+        condition: on-failure
+    configs:
+      - config.yaml
+    secrets:
+      - dtr.cert.pem
+      - cache.cert.pem
+      - cache.key.pem
+configs:
+  config.yaml:
+    file: ./config.yaml
+secrets:
+  dtr.cert.pem:
+    file: ./certs/dtr.cert.pem
+  cache.cert.pem:
+    file: ./certs/cache.cert.pem
+  cache.key.pem:
+    file: ./certs/cache.key.pem
