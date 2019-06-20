@@ -67,7 +67,7 @@ spec:
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 33333
+    nodePort: 30001
 ---
 apiVersion: v1
 kind: Service
