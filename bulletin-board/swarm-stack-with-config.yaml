@@ -6,7 +6,7 @@ services:
     networks:
       - bb-net
     volumes:
-      - sqlbackup:/var/opt/mssql
+      - sqlbackup:/var/lib/postgresql/data
 
   bb-app:
     image: ${dockerId}/bb-app:v2.2
@@ -36,7 +36,7 @@ secrets:
 
 configs:
   proxyconfig:
-    file: ./bulletin-board-proxy/nginx.conf
+    external: true
 
 volumes:
   sqlbackup:
