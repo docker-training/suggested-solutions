@@ -12,9 +12,9 @@ By the end of this primer, you should be able to:
 Vim is a powerful text editor used in CLI that has a particular working method. Vim has two modes:
 
  - Command Mode: When you start vim, you are placed in Command mode. In this mode, you can move across the screen and delete and copy text.
- - Insert Mode: You cannot write text in command mode. To insert text, there is a dedicated insert mode.
+ - Insert Mode: This is the mode for writing text, like most other text editors. You'll need to switch to Insert Mode before you can start typing.
 
- 1.  To open vim, you will need to enter:
+1.  To open vim, you will need to enter:
 
     ```bash
     vim <name of file>
