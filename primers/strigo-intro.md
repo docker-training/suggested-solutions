@@ -33,3 +33,16 @@ With this introduction to Strigo, you should know how to:
     ![""](../primers/images/screen-tabs.png)/
 
     You can make more if necessary.
+
+## Troubleshooting
+
+### Cutting and Pasting
+
+Some users on some platfoms report trouble cutting and pasting between documents on their machine and Strigo. If you're having trouble, see the edge-case workarounds below:
+
+ - **Windows machine, linux VMs in Strigo**: if you're accessing linux VMs in Strigo from a Windows machine, try the latest Firefox rather than Chrome.
+ - **Windows VMs in Strigo**: Note that the Strigo environment is a full remote desktop. Try opening a browser _inside_ your Strigo environment, and visiting the exercies website from there; users report more success cutting and pasting between browsers and powershells inside the same VM, rather than from a browser on their machine to a powershell inside the Windows VM.
+ 
+### Node Failure (instructors)
+
+Note that if a student experiences a failure in their VMs, an instructor can replace all of them by visiting the Student list in the Strigo instructor's environment, checking the checkbox by the student's name, and choosing *Replace Nodes*. Note that this destroys and replaces the existing VMs for that student, so should only be used as a last resort.
