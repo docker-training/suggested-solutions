@@ -46,3 +46,7 @@ Some users on some platfoms report trouble cutting and pasting between documents
 ### Node Failure (instructors)
 
 Note that if a student experiences a failure in their VMs, an instructor can replace all of them by visiting the Student list in the Strigo instructor's environment, checking the checkbox by the student's name, and choosing *Replace Nodes*. Note that this destroys and replaces the existing VMs for that student, so should only be used as a last resort.
+
+### Extra Lab Time (instructors)
+
+If you need more time for your class, navigate to the settings page (cog in the bottom left of the instructor view), and click *Extend*. Feel free to give your students one extra day after the class ends to finish exercises they didn't have time for during the workshop.
