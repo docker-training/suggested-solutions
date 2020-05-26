@@ -3,8 +3,9 @@
 With this introduction to Strigo, you should know how to:
 
  - Use the dropdown to switch nodes
- - Use the gear shift button to find out IP/public DNS info
+ - Use the gear button to find out IP/public DNS info
  - Use the tabbing mechanism to make new session tabs
+ - Perform some basic troubleshooting of your Strigo environment
 
 ## Switch Nodes
 
@@ -12,9 +13,11 @@ With this introduction to Strigo, you should know how to:
 
     ![""](../primers/images/screen-switch-nodes.png)/
 
+    **At the start of your workshop, it's a good idea to check your connection to all your nodes.** If any of them are unresponsive, your instructor can replace them through the student admin panel.
+
 ## Connection Information
 
-1.  To the right of the drop down menu, there is a gear shift symbol. Click on it then on the `Machine Info` tab in order to get information about this node:
+1.  To the right of the drop down menu, there is a gear symbol. Click on it then on the `Machine Info` tab in order to get information about this node:
 
     ![""](../primers/images/screen-machine-info.png)/
 
