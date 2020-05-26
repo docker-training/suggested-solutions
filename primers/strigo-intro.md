@@ -56,9 +56,9 @@ All Strigo nodes are set up with a keypair so you can SSH directly to them if yo
  ```
  $ chmod 400 hostname_rsa
  ```
- - connect to your node:
+ - connect to your node (check command line in the Strigo browser for user, might be `ubuntu` or `centos` depending on lab):
  ```
- $ ssh -i hostname_rsa centos@<public IP>
+ $ ssh -i hostname_rsa ubuntu@<public IP>
  ```
  
 ### Node Failure (instructors)
