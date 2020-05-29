@@ -1,0 +1,24 @@
+version: 0.1
+log:
+  level: info
+storage:
+  delete:
+    enabled: true
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: 0.0.0.0:443
+  secret: generate-random-secret
+  host: https://<ucp-node-0 FQDN>
+  tls:
+    certificate: /run/secrets/cache.cert.pem
+    key: /run/secrets/cache.key.pem
+middleware:
+  registry:
+      - name: downstream
+        options:
+          blobttl: 24h
+          upstreams:
+            - https://<DTR FQDN>:4443
+          cas:
+            - /run/secrets/dtr.cert.pem
