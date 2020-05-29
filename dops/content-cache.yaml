@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   cache:
-    image: docker/dtr-content-cache:2.7.0
+    image: docker/dtr-content-cache:2.8.0
     entrypoint:
       - /start.sh
       - "/config.yaml"
