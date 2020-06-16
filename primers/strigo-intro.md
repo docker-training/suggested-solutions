@@ -35,7 +35,7 @@ With this introduction to Strigo, you should know how to:
 
     ![""](../primers/images/screen-tabs.png)/
 
-    You can make more if necessary.
+    You can make more if necessary. **Note that this is a brand new shell,** just as if you had made a new SSH connection to a remote machine - therefore, any environment vairables from the previous tab won't be present in this new tab.
 
 ## Troubleshooting
 
