@@ -99,7 +99,7 @@ In the following exercises, we will configure a default `LimitRange` object for 
     limitrange/resource-limit-range created
     ```
 
-3.  Verify `resource-limit-range` object status:
+2.  Verify `resource-limit-range` object status:
 
     ```bash
     ubuntu@master0:~/multitenant$ kubectl describe limitranges
