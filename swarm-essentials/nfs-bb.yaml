@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  bb:
+    image: training/bb-frontend:v2.2
+    networks:
+      - bbnet
+    env_file:
+      - config.env
+    secrets:
+      - passwd
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - "node.role==worker"
+      resources:
+        limits:
+          memory: 1Gi
+        reservations:
+          memory: 1Gi
+    ports:
+      - "8000:8080"
+
+  bb-db:
+    image: training/bb-database:v2
+    networks:
+      - bbnet
+    volumes:
+      - type: volume
+        source: dbbacking
+        target: /var/lib/postgresql/data
+        volume:
+          nocopy: true
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - "node.hostname==node-2"
+      resources:
+        limits:
+          memory: 1Gi
+        reservations:
+          memory: 1Gi
+          
+networks:
+  bbnet:
+
+secrets:
+  passwd:
+    external: true
+
+volumes:
+  dbbacking:
+    driver_opts:
+      type: "nfs"
+      o: "addr=<NFS Private IP>,nolock,soft,rw"
+      device: ":/var/nfsshare"
