@@ -16,9 +16,9 @@ services:
           - "node.role==worker"
       resources:
         limits:
-          memory: 1Gi
+          memory: 1G
         reservations:
-          memory: 1Gi
+          memory: 1G
     ports:
       - "8000:8080"
 
@@ -39,9 +39,9 @@ services:
           - "node.hostname==node-2"
       resources:
         limits:
-          memory: 1Gi
+          memory: 1G
         reservations:
-          memory: 1Gi
+          memory: 1G
           
 networks:
   bbnet:
